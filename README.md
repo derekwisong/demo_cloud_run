@@ -2,17 +2,17 @@
 
 _It's assumed that you've set up the [gcloud cli](https://cloud.google.com/sdk/gcloud)._
 
-# Instructions
+## Instructions
 
 There is a `deploy.bash` script that runs a deployment similar to below.
 
-## Steps to Deploy Manually
+### Steps to Deploy Manually
 
 1. Deploy the code from the `demo_app/` subdirectory as a service named `demo-app`.In my case I want a specific 
    region, and specify it at the command line.
 
    ```bash
-   gcloud run deploy demo-app --region us-east1 --source demo_app
+   $ gcloud run deploy demo-app --region us-east1 --source demo_app
    ```
 
 2. Wait for `gcloud` to finish. It can take a minute or two.
@@ -20,7 +20,7 @@ There is a `deploy.bash` script that runs a deployment similar to below.
 The output looks something like:
 
 ```bash
-derek@prim:~/src/demo_cloud_run $ gcloud run deploy demo-app --region us-east1 --source demo_app
+$ gcloud run deploy demo-app --region us-east1 --source demo_app
 
 Deploying from source requires an Artifact Registry Docker repository to store built containers. A repository named [cloud-run-source-deploy] in region [us-east1] will be created.
 
@@ -42,4 +42,11 @@ Done.
 
 Service [demo-app] revision [demo-app-REDACTED] has been deployed and is serving 100 percent of traffic.
 Service URL: https://REDACTED.a.run.app
+```
+
+## Observe the Service is Running
+
+```bash
+$ echo $(curl -s https://REDACTED.a.run.app)
+Hello World!
 ```
